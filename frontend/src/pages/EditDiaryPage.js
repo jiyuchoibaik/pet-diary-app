@@ -11,6 +11,7 @@ function EditDiaryPage() {
   const [diary, setDiary] = useState(null);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [isPublic, setIsPublic] = useState(false); // 💡 isPublic 상태 추가
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -39,6 +40,7 @@ function EditDiaryPage() {
           setDiary(data);
           setTitle(data.title);
           setContent(data.content);
+          setIsPublic(data.isPublic || false);
         } else if (response.status === 401 || response.status === 403) {
           localStorage.removeItem('token');
           alert('수정 권한이 없거나 세션이 만료되었습니다.');
@@ -73,7 +75,7 @@ function EditDiaryPage() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify({ title, content }),
+        body: JSON.stringify({ title, content, isPublic }),
       });
 
       if (response.ok) {
@@ -107,6 +109,9 @@ function EditDiaryPage() {
       content={content}
       setContent={setContent}
       imageUrl={diary.imageUrl}
+      // 💡 isPublic 상태와 setState 함수 전달
+      isPublic={isPublic}
+      setIsPublic={setIsPublic}
       handleSubmit={handleSubmit}
       handleCancel={handleCancel}
     />

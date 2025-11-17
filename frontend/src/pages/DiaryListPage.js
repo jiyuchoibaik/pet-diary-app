@@ -135,6 +135,7 @@ function DiaryListPage() {
       <div className="header">
         <h2>우리 강아지 일기장 🐶</h2>
         <div>
+          <button onClick={() => navigate('/public')} className="public-feed-button">전체 공개 피드</button>
           <button onClick={() => navigate('/create')} className="create-button">새 일기 작성</button>
           <button onClick={handleLogout} className="logout-button">로그아웃</button>
         </div>

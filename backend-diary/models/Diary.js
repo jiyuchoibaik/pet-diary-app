@@ -24,6 +24,11 @@ const DiarySchema = new Schema({
   aiAnalysis: {
     species: String,
     action: String
+  },
+  // 🌟 [추가] 공개 여부 필드
+  isPublic: {
+    type: Boolean,
+    default: false, // 기본값은 '비공개'
   }
 }, {
   timestamps: true // createdAt, updatedAt 자동 생성

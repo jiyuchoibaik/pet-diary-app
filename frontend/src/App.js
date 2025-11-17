@@ -8,6 +8,7 @@ import DiaryListPage from './pages/DiaryListPage'; // 🚨 일기 목록 페이�
 import CreateDiaryPage from './pages/CreateDiaryPage'; // 🚨 일기 작성 페이지 (새로 생성할 예정)
 import ProtectedRoute from './components/ProtectedRoute'; // 🚨 ProtectedRoute 컴포넌트 임포트
 import EditDiaryPage from './pages/EditDiaryPage'; // ⬅️ 새로 임포트
+import PublicFeedPage from './pages/PublicFeedPage';
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
               <EditDiaryPage /> {/* 일기 수정 페이지 */}
            </ProtectedRoute>
           } />
+          
+          {/* 🌟 전체 공개 피드 라우트 추가 🌟 */}
+        <Route path="/public" element={<PublicFeedPage />} />
         
         {/* 필요한 경우 <Route path="*" element={<NotFound />} /> */}
 

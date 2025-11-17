@@ -1,14 +1,14 @@
-// frontend/src/components/EditDiaryForm.js
+// frontend/src/components/EditDiaryForm.js (수정)
 
 import React from 'react';
 
-function EditDiaryForm({ title, setTitle, content, setContent, imageUrl, handleSubmit, handleCancel }) {
+// 💡 isPublic 상태와 setIsPublic 핸들러를 props로 받습니다.
+function EditDiaryForm({ title, setTitle, content, setContent, imageUrl, isPublic, setIsPublic, handleSubmit, handleCancel }) {
 
   return (
     <div className="edit-diary-container">
       <h2>일기 수정하기</h2>
       
-      {/* 폼 제출 시 상위 컴포넌트의 handleSubmit 함수 실행 */}
       <form onSubmit={handleSubmit}> 
         <div className="form-group">
           <label htmlFor="title">제목</label>
@@ -18,7 +18,6 @@ function EditDiaryForm({ title, setTitle, content, setContent, imageUrl, handleS
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
-            // 🌟 여기에 CSS 프레임워크 클래스 추가 가능 (예: className="form-control")
           />
         </div>
         <div className="form-group">
@@ -29,8 +28,20 @@ function EditDiaryForm({ title, setTitle, content, setContent, imageUrl, handleS
             value={content}
             onChange={(e) => setContent(e.target.value)}
             required
-             // 🌟 여기에 CSS 프레임워크 클래스 추가 가능 (예: className="form-textarea")
           ></textarea>
+        </div>
+        
+        {/* 🌟 새로 추가된 전체 공개 체크박스 🌟 */}
+        <div className="form-group">
+          <label htmlFor="isPublic" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <input
+              type="checkbox"
+              id="isPublic"
+              checked={isPublic}
+              onChange={(e) => setIsPublic(e.target.checked)} // 체크 상태를 상위 컴포넌트로 전달
+            />
+            **전체 공개** (다른 사용자에게 보여집니다.)
+          </label>
         </div>
         
         {/* 이미지 표시 부분 */}
@@ -45,13 +56,8 @@ function EditDiaryForm({ title, setTitle, content, setContent, imageUrl, handleS
           </div>
         )}
 
-        <button type="submit" className="save-button">
-          수정 완료
-           {/* 🌟 여기에 CSS 프레임워크 클래스 추가 가능 (예: className="btn btn-primary") */}
-        </button>
-        <button type="button" onClick={handleCancel} className="cancel-button">
-          취소
-        </button>
+        <button type="submit" className="save-button">수정 완료</button>
+        <button type="button" onClick={handleCancel} className="cancel-button">취소</button>
       </form>
     </div>
   );
