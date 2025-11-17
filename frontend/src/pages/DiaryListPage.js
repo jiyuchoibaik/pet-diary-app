@@ -152,7 +152,7 @@ function DiaryListPage() {
             <div key={diary._id || diary.id} className="diary-card">
               {diary.imageUrl && (
                 <img
-                  src={`http://localhost:8080${diary.imageUrl}`}
+                  src={diary.imageUrl}
                   alt={diary.title}
                   className="diary-image"
                 />

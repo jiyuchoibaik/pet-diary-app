@@ -49,7 +49,7 @@ function PublicFeedPage() {
                         <div key={diary._id} className="diary-card public-card">
                             {diary.imageUrl && diary.imageUrl !== 'placeholder_for_simple_upload' && (
                                 <img 
-                                    src={`http://localhost:8080${diary.imageUrl}`} 
+                                    src={diary.imageUrl}
                                     alt={diary.title} 
                                     className="diary-image"
                                 />
