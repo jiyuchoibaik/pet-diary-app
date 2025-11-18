@@ -25,6 +25,7 @@ const DiarySchema = new Schema({
     species: String,
     action: String
   },
+  
   // 🌟 [추가] 공개 여부 필드
   isPublic: {
     type: Boolean,
